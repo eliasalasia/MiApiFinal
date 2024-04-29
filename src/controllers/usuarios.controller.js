@@ -38,6 +38,11 @@ export const remover = async (req, res) => {
 export const actualizar = async (req, res) => {
   try {
     const { id } = req.params
+
+    const isAdmin = true
+    if (!isAdmin) {
+      return res.status(403).json({ message: 'No tienes permisos de administrador para realizar esta acción' })
+    }
     if (!id) return res.status(400).json({ message: 'No se reconoce al usuario' })
     const { nombre, email, contrasena } = req.body
     if (!nombre || !email || !contrasena) {
