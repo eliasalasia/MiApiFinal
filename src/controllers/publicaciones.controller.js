@@ -46,7 +46,7 @@ export const porTit = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' })
   }
 }
-
+// Crear la publicaciones por título
 export const crearPublicacion = async (req, res) => {
   try {
     const { usuario_id: usuarioId, titulo, contenido, fecha_creacion: fechaCreacion } = req.body
@@ -61,7 +61,7 @@ export const crearPublicacion = async (req, res) => {
     res.status(500).json({ message: 'Hubo un error interno', details: error.message })
   }
 }
-
+// Actualizar la publicacion
 export const actPublicacion = async (req, res) => {
   try {
     const { id } = req.params
@@ -78,7 +78,7 @@ export const actPublicacion = async (req, res) => {
     res.status(500).json({ message: 'Hubo un error interno', details: error.message })
   }
 }
-
+// eliminar la Publicacion
 export const eliminarPublicacion = async (req, res) => {
   try {
     const { id } = req.params
