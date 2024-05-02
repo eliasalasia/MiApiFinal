@@ -13,13 +13,13 @@ export const index = async (req, res) => {
 // Para crear Usuarios
 export const crear = async (req, res) => {
   try {
-    const { nombre, email, contrasena, rol } = req.body
+    const { nombre, email, contrasena, rol_id: rolId } = req.body
 
-    if (!nombre || !email || !contrasena || !rol) {
+    if (!nombre || !email || !contrasena || !rolId) {
       return res.status(400).json({ message: 'Datos faltantes' })
     }
 
-    await pool.execute('INSERT INTO usuarios(nombre, email, contrasena, rol) VALUES (?, ?, ?, ?)', [nombre, email, contrasena, rol])
+    await pool.execute('INSERT INTO usuarios(nombre, email, contrasena, rol_id) VALUES (?, ?, ?, ?)', [nombre, email, contrasena, rol])
     res.status(201).json({ message: 'Usuario Creado' })
   } catch (error) {
     res.status(500).json({ message: 'hubo un error interno', details: error.message })
