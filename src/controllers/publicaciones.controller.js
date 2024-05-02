@@ -31,7 +31,7 @@ export const porCateg = async (req, res) => {
 // Buscar publicaciones por título
 export const porTit = async (req, res) => {
   try {
-    const titulo = req.params.nombre // Corregir el nombre del parámetro
+    const titulo = req.params.titulo // Corregir el nombre del parámetro
     const query = 'SELECT * FROM publicaciones p INNER JOIN publicaciones_categorias pc ON p.id = pc.publicacion_id INNER JOIN categorias c ON c.id = pc.categoria_id WHERE p.titulo = ?'
 
     const [results] = await pool.execute(query, [titulo])
