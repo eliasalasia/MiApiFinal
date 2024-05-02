@@ -5,8 +5,11 @@ const router = Router()
 
 // Ruta crear nuevo comentario
 router.post('/publicaciones/comentario', crearComent)
+
 router.put('/actualizarcomentario/:id', actComent)
+
 router.delete('/eliminarcoment/:id', eliminarComentario)
+
 router.get('/publicaciones/:id/comentarios', obtenerComent)
 
 export default router

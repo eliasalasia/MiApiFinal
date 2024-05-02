@@ -1,5 +1,6 @@
 import { pool } from '../config/db.js'
 
+// Ruta para ver todos los ususarios
 export const index = async (req, res) => {
   try {
     const sql = 'SELECT * FROM usuarios'
@@ -9,7 +10,7 @@ export const index = async (req, res) => {
     res.status(500).json({ message: 'Hubo un error interno' })
   }
 }
-
+// Para crear Usuarios
 export const crear = async (req, res) => {
   try {
     const { nombre, email, contrasena, rol } = req.body
@@ -24,7 +25,7 @@ export const crear = async (req, res) => {
     res.status(500).json({ message: 'hubo un error interno', details: error.message })
   }
 }
-
+// Ruta para Eliminar usuario
 export const remover = async (req, res) => {
   try {
     const { id } = req.params
@@ -34,7 +35,7 @@ export const remover = async (req, res) => {
     res.status(500).json({ message: 'Hubo un error interno' })
   }
 }
-
+// Ruta para actualizar usuarios
 export const actualizar = async (req, res) => {
   try {
     const { id } = req.params
