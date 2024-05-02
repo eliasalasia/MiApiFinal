@@ -1,20 +1,16 @@
-import { pool } from '../config/db.js'
-
 export const verificarAdmin = async (req, res, next) => {
-  const { nombre } = req.body
+  try {
+    const { id } = req.body
 
-  if (!nombre) {
-    return res.status(400).json({ message: 'Usuario no identificado' })
+    // Verificar si el ID proporcionado es 1
+    if (id !== 2) {
+      return res.status(403).json({ message: 'No permitido' })
+    }
+
+    // Si el ID es 1, continuar con la creación de la categoría
+    next()
+  } catch (error) {
+    console.error('Error al verificar permisos:', error)
+    res.status(500).json({ message: 'Error interno del servidor' })
   }
-
-  const [usuario] = await pool.execute('SELECT * FROM usuarios WHERE usuarios.id = ?', [nombre])
-  if (usuario.length === 0) {
-    return res.status(404).json({ message: 'Usuario no encontrado' })
-  }
-
-  if (usuario[0].rol_id !== 1) {
-    return res.status(403).json({ message: 'No permitido' })
-  }
-
-  next()
 }

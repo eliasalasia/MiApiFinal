@@ -3,6 +3,7 @@ import { PORT } from './config/config.js'
 import usuariosRoutes from './routes/usuarios.routes.js'
 import publicacionesRoutes from './routes/publicaciones.routes.js'
 import categoriasRoutes from './routes/categorias.routes.js'
+import comentariosRoutes from './routes/comentarios.routes.js'
 
 const app = express()
 
@@ -13,5 +14,7 @@ app.use(usuariosRoutes)
 app.use(publicacionesRoutes)
 
 app.use(categoriasRoutes)
+
+app.use(comentariosRoutes)
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))

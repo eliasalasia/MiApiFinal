@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { index, crear, remover, actualizar } from '../controllers/usuarios.controller.js'
+import { verificarAdmin } from '../permisos/permisos.js'
 
 const router = Router()
 // Ruta para Admin
-router.get('/api/admin', index)
+router.get('/api/admin', verificarAdmin, index)
 // Ruta para crear usuarios
 router.post('/api/usuarios/crear', crear)
 // Ruta eliminar usuarios
