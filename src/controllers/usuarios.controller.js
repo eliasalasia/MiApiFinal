@@ -19,7 +19,7 @@ export const crear = async (req, res) => {
       return res.status(400).json({ message: 'Datos faltantes' })
     }
 
-    await pool.execute('INSERT INTO usuarios(nombre, email, contrasena, rol_id) VALUES (?, ?, ?, ?)', [nombre, email, contrasena, rol])
+    await pool.execute('INSERT INTO usuarios(nombre, email, contrasena, rol_id) VALUES (?, ?, ?, ?)', [nombre, email, contrasena, rolId])
     res.status(201).json({ message: 'Usuario Creado' })
   } catch (error) {
     res.status(500).json({ message: 'hubo un error interno', details: error.message })

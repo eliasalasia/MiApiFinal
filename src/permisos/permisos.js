@@ -2,12 +2,12 @@ export const verificarAdmin = async (req, res, next) => {
   try {
     const { id } = req.body
 
-    // Verificar si el ID proporcionado es 1
+    // Verificar si el ID proporcionado es 2
     if (id !== 2) {
       return res.status(403).json({ message: 'No permitido' })
     }
 
-    // Si el ID es 1, continuar con la creación de la categoría
+    // Si el ID es 2, continuar con la creación de la categoría
     next()
   } catch (error) {
     console.error('Error al verificar permisos:', error)
