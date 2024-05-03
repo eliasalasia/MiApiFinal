@@ -1,6 +1,7 @@
 import { pool } from '../config/db.js'
 import { verificarAdmin } from '../permisos/permisos.js'
 
+// ver todas las categorias
 export const indexCateg = async (req, res) => {
   try {
     await verificarAdmin(req, res, async () => {
@@ -12,7 +13,7 @@ export const indexCateg = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' })
   }
 }
-
+// Para crear la categoria
 export const crearCateg = async (req, res) => {
   try {
     await verificarAdmin(req, res, async () => {
@@ -26,7 +27,7 @@ export const crearCateg = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' })
   }
 }
-
+// Para actualizar la categoria
 export const actualizarCateg = async (req, res) => {
   try {
     await verificarAdmin(req, res, async () => {
@@ -41,7 +42,7 @@ export const actualizarCateg = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' })
   }
 }
-
+// Eliminar categoria
 export const eliminarCateg = async (req, res) => {
   try {
     await verificarAdmin(req, res, async () => {
@@ -55,7 +56,7 @@ export const eliminarCateg = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' })
   }
 }
-
+// Asocia categoria con publicacion
 export const asociarC = async (req, res) => {
   try {
     const { categoria_id: categoriaId } = req.params
